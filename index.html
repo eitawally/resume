@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-lang-key="pageTitle">Wallace Batista de Santana Filho - Personal Website</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="text-gray-800">
+    <header class="bg-gradient-to-r from-blue-800 to-blue-600 text-white py-6 shadow-md">
+        <div class="container flex flex-col sm:flex-row justify-between items-center">
+            <div class="mb-4">
+                <img src="./resume/resources/resume-photo.jpg" alt="Profile Photo" class="rounded-full w-28 h-28 mx-auto border-4 border-white shadow-md object-cover">
+            </div>
+            <div class="text-center sm:text-left mb-4 sm:mb-0">
+                <h1 class="text-3xl font-bold" data-lang-key="headerTitle">Wallace Batista de Santana Filho</h1>
+                <p class="text-lg font-light" data-lang-key="headerSubtitle">Test Engineer | Software Quality Assurance</p>
+            </div>
+            <div class="language-switcher flex space-x-2 bg-blue-700 rounded-lg p-1">
+                <button id="lang-en" class="active">English</button>
+                <button id="lang-pt">Português</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-grow container mt-8">
+        <section class="link-card text-center">
+            <h2 class="text-2xl font-semibold mb-4" data-lang-key="heroTitle">Welcome to My Personal Page!</h2>
+            <p class="text-gray-700 leading-relaxed" data-lang-key="heroText">
+                I'm a dedicated Test Engineer with extensive experience in Quality Assurance. Here you'll find links to my resume and other professional profiles.
+            </p>
+        </section>
+
+        <section class="link-card">
+            <h2 class="text-2xl font-semibold mb-4" data-lang-key="resumeLinksTitle">My Resumes</h2>
+            <div class="space-y-2">
+                <div class="link-item">
+                    <span class="icon">&#128196;</span> <a href="resume/resume.html?lang=en" target="_blank" data-lang-key="resumeLinkEn">View Resume (English)</a>
+                </div>
+                <div class="link-item">
+                    <span class="icon">&#128196;</span> <a href="resume/resume.html?lang=pt" target="_blank" data-lang-key="resumeLinkPt">View Resume (Portuguese)</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="link-card">
+            <h2 class="text-2xl font-semibold mb-4" data-lang-key="otherLinksTitle">Other Links</h2>
+            <div class="space-y-2">
+                <div class="link-item">
+                    <span class="icon">&#128100;</span> <a href="https://www.linkedin.com/in/wbsf" target="_blank" rel="noopener noreferrer" data-lang-key="linkedinLink">LinkedIn Profile</a>
+                </div>
+                <div class="link-item">
+                    <span class="icon">&#128187;</span> <a href="https://github.com/eitawally" target="_blank" rel="noopener noreferrer" data-lang-key="githubLink">GitHub Profile</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-gray-800 text-white py-4 mt-8">
+        <div class="container text-center text-sm">
+            <p data-lang-key="footerText">&copy; 2025 Wallace Batista de Santana Filho. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
