@@ -1,70 +1,204 @@
-body {
-    font-family: 'Inter', sans-serif;
-    background-color: #f0f4f8; /* Soft background color */
+/* Resume custom styles + print logic */
+
+/* Base animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
+
+.animate-fade-in-up {
+    animation: fadeInUp 0.5s ease-out forwards;
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-fade-in-down {
+    animation: fadeInDown 0.5s ease-out forwards;
+}
+
+/* Glass Container */
+.glass-container {
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+.dark .glass-container {
+    background-color: rgba(30, 41, 59, 0.4);
+}
+
+/* Section Title Highlight */
 .section-title {
     position: relative;
     padding-bottom: 0.5rem;
-    margin-bottom: 1rem;
-    font-weight: 600;
-    color: #2c3e50; /* Dark color for titles */
+    margin-bottom: 1.5rem;
+    font-weight: 700;
 }
+
 .section-title::after {
     content: '';
     position: absolute;
     left: 0;
     bottom: 0;
-    width: 50px;
-    height: 3px;
-    background-color: #3498db; /* Blue highlight line */
+    width: 60px;
+    height: 4px;
+    background: linear-gradient(90deg, #3b82f6, #60a5fa);
     border-radius: 9999px;
 }
-.card {
-    background-color: #ffffff;
-    border-radius: 12px; /* More rounded corners */
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); /* Softer shadow */
-    padding: 1.5rem;
-    margin-bottom: 1.5rem;
+
+.dark .section-title::after {
+    background: linear-gradient(90deg, #60a5fa, #93c5fd);
 }
+
+/* Skill Badges */
 .skill-badge {
-    background-color: #e0f2fe; /* Light blue for badges */
-    color: #2196f3; /* Blue text for badges */
+    background: linear-gradient(135deg, #e0f2fe, #dbeafe);
+    color: #1e40af;
     padding: 0.4rem 0.8rem;
-    border-radius: 20px;
+    border-radius: 9999px;
     font-size: 0.875rem;
-    font-weight: 500;
-    margin-right: 0.5rem;
-    margin-bottom: 0.5rem;
+    font-weight: 600;
+    border: 1px solid rgba(59, 130, 246, 0.2);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s, box-shadow 0.2s;
     display: inline-block;
 }
-.experience-item {
-    margin-bottom: 1.25rem;
-    padding-left: 1rem;
-    border-left: 3px solid #d1d5db; /* Subtle timeline line */
+
+.skill-badge:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(59, 130, 246, 0.15);
 }
-.experience-item:last-child {
-    margin-bottom: 0;
+
+.dark .skill-badge {
+    background: linear-gradient(135deg, #1e3a8a, #1e40af);
+    color: #bfdbfe;
+    border: 1px solid rgba(96, 165, 250, 0.3);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
+
+.dark .skill-badge:hover {
+    box-shadow: 0 4px 8px rgba(96, 165, 250, 0.3);
+}
+
+/* Contact Info Links */
 .contact-info a {
-    color: #ffffff; /* White color for links in header */
+    color: #bfdbfe;
     text-decoration: none;
     transition: color 0.2s;
 }
+
 .contact-info a:hover {
-    color: #e0e0e0; /* Lighter color on hover */
+    color: #ffffff;
+    text-decoration: underline;
 }
-.top-right-button {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background-color: #ffffff;
-  color: #000000;
-  font-weight: 500;
-  border-radius: 0.75rem; /* More rounded corners */
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); /* Softer shadow */
-  padding: 0.4rem 0.8rem;
-  transition: transform 0.2s ease-in-out;
+
+/* Timeline animations */
+.experience-item:hover .timeline-dot {
+    transform: scale(1.2);
+    transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
-.top-right-button:hover {
-    transform: translateY(-2px) translateX(2px);
+
+.timeline-dot {
+    transition: transform 0.2s ease;
+}
+
+/* --- Print Styles specifically made for window.print() --- */
+@media print {
+    body {
+        background: none !important;
+        background-color: white !important;
+    }
+    
+    .no-print {
+        display: none !important;
+    }
+    
+    .print-bg-white {
+        background-color: white !important;
+    }
+    
+    .glass-container {
+        box-shadow: none !important;
+        border: none !important;
+        background-color: white !important;
+        backdrop-filter: none !important;
+        max-width: 100% !important;
+        margin: 0 !important;
+    }
+    
+    main {
+        padding: 0 !important;
+        background-color: white !important;
+    }
+    
+    /* Modify colors to look good on paper */
+    * {
+        color: black !important;
+    }
+    
+    .text-blue-600, .text-blue-400 {
+        color: #2563eb !important; /* Force readable blue on print */
+    }
+    
+    .skill-badge {
+        background: white !important;
+        border: 1px solid #ccc !important;
+        color: #333 !important;
+        box-shadow: none !important;
+    }
+    
+    .section-title::after {
+        background: #2563eb !important;
+    }
+    
+    header {
+        padding: 2rem !important;
+        background: none !important;
+        background-color: white !important;
+        border-bottom: 2px solid #ccc !important;
+    }
+    
+    header h1, header p, header .contact-info, header .contact-info a {
+        color: black !important;
+    }
+    
+    header img {
+        display: none !important; /* Optionally hide photo to save ink, or leave it */
+    }
+    
+    /* Ensure page breaks make sense */
+    h2, h3 {
+        page-break-after: avoid;
+    }
+    
+    .experience-item {
+        page-break-inside: avoid;
+    }
+    
+    /* Restore timeline dot color in print */
+    .timeline-dot {
+        background-color: #2563eb !important;
+        border-color: white !important;
+    }
+    
+    /* Avoid cutting off text */
+    * {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+    }
 }

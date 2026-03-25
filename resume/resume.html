@@ -3,34 +3,75 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Resume of Wallace Batista de Santana Filho, Test Engineer | Software Quality Assurance.">
     <title data-lang-key="resumeTitle">Loading...</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="resume-style.css">
+    <script>
+        if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+    </script>
 </head>
-<body class="bg-gray-100 p-4 sm:p-6 lg:p-8">
-    <div class="max-w-4xl mx-auto bg-white rounded-xl shadow-lg overflow-hidden">
-        <header class="bg-gradient-to-r from-blue-800 to-blue-600 text-white p-6 sm:p-8 text-center rounded-t-xl relative">
-            <button class="top-right-button"  data-lang-key="backButton" onclick="history.back()"></button>
-            <div class="mb-4">
-                <img src="./resources/resume-photo.jpg" alt="Profile Photo" class="rounded-full w-28 h-28 mx-auto border-4 border-white shadow-md object-cover">
+<body class="bg-gradient-to-br from-gray-50 to-gray-200 dark:from-slate-900 dark:to-slate-800 transition-colors duration-300 p-4 sm:p-6 lg:p-8 min-h-screen text-gray-800 dark:text-gray-200">
+    <!-- Action controls (hide on print) -->
+    <div class="max-w-4xl mx-auto flex justify-between items-center mb-6 no-print action-bar animate-fade-in-down z-20 relative">
+        <button class="flex items-center space-x-2 bg-white/80 dark:bg-slate-800/80 backdrop-blur-md px-4 py-2 rounded-xl shadow border border-gray-200 dark:border-slate-700 hover:bg-white dark:hover:bg-slate-700 transition font-medium" onclick="history.back()">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+            <span data-lang-key="backButton">Back</span>
+        </button>
+        
+        <div class="flex space-x-3 items-center">
+            <button id="print-btn" class="flex items-center space-x-2 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-xl shadow transition font-medium" onclick="window.print()">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"></path></svg>
+                <span>Download PDF</span>
+            </button>
+            <button id="theme-toggle" class="p-2.5 rounded-xl bg-white/80 dark:bg-slate-800/80 backdrop-blur-md shadow border border-gray-200 dark:border-slate-700 hover:bg-white dark:hover:bg-slate-700 transition" aria-label="Toggle Dark Mode">
+                <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5 text-gray-700 dark:text-gray-200" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
+                <svg id="theme-toggle-light-icon" class="hidden w-5 h-5 text-gray-700 dark:text-gray-200" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
+            </button>
+        </div>
+    </div>
+
+    <div class="max-w-4xl mx-auto glass-container rounded-2xl shadow-xl overflow-hidden animate-fade-in-up transition-all duration-300 relative z-10">
+        <header class="bg-gradient-to-r from-blue-800 to-blue-600 dark:from-indigo-950 dark:to-blue-900 text-white p-8 sm:p-12 text-center relative overflow-hidden transition-colors duration-300 border-b border-blue-500/30 rounded-t-2xl">
+            <!-- Decorative overlay -->
+            <div class="absolute inset-0 bg-white/5 no-print" style="background-image: repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(255,255,255,0.05) 10px, rgba(255,255,255,0.05) 20px);"></div>
+            <div class="mb-5 relative inline-block">
+                <div class="absolute inset-0 bg-blue-400 rounded-full blur opacity-40 animate-pulse no-print"></div>
+                <img src="./resources/resume-photo.jpg" alt="Profile Photo" class="relative rounded-full w-32 h-32 mx-auto border-4 border-white/90 shadow-xl object-cover mix-blend-normal">
             </div>
-            <h1 class="text-3xl sm:text-4xl font-bold mb-2" data-lang-key="fullName"></h1>
-            <p class="text-lg sm:text-xl font-light" data-lang-key="jobTitle"></p>
-            <div class="mt-4 text-sm sm:text-base contact-info">
+            <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-2 tracking-tight drop-shadow-md text-white" data-lang-key="fullName"></h1>
+            <p class="text-xl sm:text-2xl font-medium text-blue-200 drop-shadow-sm mb-4" data-lang-key="jobTitle"></p>
+            <div class="text-sm border-t border-white/20 pt-4 flex flex-wrap justify-center gap-x-4 gap-y-2 contact-info w-full font-medium">
                 <p data-lang-key="contactInfo"></p>
             </div>
         </header>
 
-        <main class="p-6 sm:p-8 lg:p-10">
-            <section class="card">
-                <h2 class="section-title text-xl" data-lang-key="summaryTitle"></h2>
+        <main class="p-6 sm:p-10 bg-white/80 dark:bg-slate-800/90 print-bg-white transition-colors duration-300">
+            <section class="resume-section">
+                <h2 class="section-title text-2xl" data-lang-key="summaryTitle"></h2>
                 <p class="text-gray-700 leading-relaxed" data-lang-key="summaryText"></p>
             </section>
 
             <div class="grid">
-                <section class="card">
-                    <h2 class="section-title text-xl" data-lang-key="skillsTitle"></h2>
+                <section class="resume-section">
+                    <h2 class="section-title text-2xl" data-lang-key="skillsTitle"></h2>
                     <div class="flex flex-wrap gap-1">
                         <span class="skill-badge" data-lang-key="skillJava"></span>
                         <span class="skill-badge" data-lang-key="skillJavaScript"></span>
@@ -64,34 +105,35 @@
             </div>
 
             <section class="lg:col-span-1 card">
-                <h2 class="section-title text-xl" data-lang-key="educationTitle"></h2>
-                <p class="font-semibold text-gray-800" data-lang-key="educationDegree"></p>
-                <p class="text-gray-600" data-lang-key="educationUniversity"></p>
+                <h2 class="section-title text-2xl" data-lang-key="educationTitle"></h2>
+                <p class="font-bold text-slate-800 dark:text-gray-100 text-lg" data-lang-key="educationDegree"></p>
+                <p class="text-slate-600 dark:text-gray-400 mt-1" data-lang-key="educationUniversity"></p>
+            </section>
+
+            <section class="md:col-span-1">
+                <h2 class="section-title text-2xl" data-lang-key="certificationsTitle"></h2>
+                <p class="font-bold text-slate-800 dark:text-gray-100 text-lg" data-lang-key="certCtflName"></p>
+                <p class="text-slate-600 dark:text-gray-400 mt-1" data-lang-key="certCtflBoard"></p>
+                <p class="text-slate-600 dark:text-gray-400 mt-1" data-lang-key="certCtflLicense"></p>
             </section>
 
             <section class="lg:col-span-1 card">
-                <h2 class="section-title text-xl" data-lang-key="certificationsTitle"></h2>
-                <p class="font-semibold text-gray-800" data-lang-key="certCtflName"></p>
-                <p class="text-gray-600" data-lang-key="certCtflBoard"></p>
-                <p class="text-gray-600" data-lang-key="certCtflLicense"></p>
-            </section>
-
-            <section class="lg:col-span-1 card">
-                <h2 class="section-title text-xl" data-lang-key="languagesTitle"></h2>
-                <ul class="list-disc list-inside text-gray-700">
+                <h2 class="section-title text-2xl" data-lang-key="languagesTitle"></h2>
+                <ul class="space-y-2 text-slate-700 dark:text-gray-300 font-medium list-disc list-inside">
                     <li data-lang-key="langPortuguese"></li>
                     <li data-lang-key="langEnglish"></li>
                     <li data-lang-key="langSpanish"></li>
                 </ul>
             </section>
 
-            <section class="card">
-                <h2 class="section-title text-xl" data-lang-key="experienceTitle"></h2>
+            <section class="resume-section">
+                <h2 class="section-title text-2xl" data-lang-key="experienceTitle"></h2>
 
-                <div class="experience-item">
-                    <h3 class="font-semibold text-gray-800" data-lang-key="expVwTitle"></h3>
-                    <p class="text-gray-600 text-sm mb-2" data-lang-key="expVwDate"></p>
-                    <ul class="list-disc list-inside text-gray-700 space-y-1">
+                <div class="experience-item relative pl-8 pb-8 border-l-2 border-blue-200 dark:border-blue-800/60 last:border-0 last:pb-0">
+                    <div class="timeline-dot absolute -left-[11px] top-1 w-5 h-5 rounded-full bg-blue-600 border-4 border-white dark:border-slate-800 shadow-md"></div>
+                    <h3 class="font-bold text-xl text-slate-800 dark:text-white" data-lang-key="expVwTitle"></h3>
+                    <p class="text-blue-600 dark:text-blue-400 text-sm font-semibold mb-4 tracking-wide uppercase" data-lang-key="expVwDate"></p>
+                    <ul class="list-disc list-inside text-slate-700 dark:text-gray-300 space-y-2 text-lg">
                         <li data-lang-key="expVw1"></li>
                         <li data-lang-key="expVw2"></li>
                         <li data-lang-key="expVw3"></li>
@@ -100,10 +142,11 @@
                     </ul>
                 </div>
 
-                <div class="experience-item">
-                    <h3 class="font-semibold text-gray-800" data-lang-key="expYellowIpeTitle"></h3>
-                    <p class="text-gray-600 text-sm mb-2" data-lang-key="expYellowIpeDate"></p>
-                    <ul class="list-disc list-inside text-gray-700 space-y-1">
+                <div class="experience-item relative pl-8 pb-8 border-l-2 border-blue-200 dark:border-blue-800/60 last:border-0 last:pb-0">
+                    <div class="timeline-dot absolute -left-[11px] top-1 w-5 h-5 rounded-full bg-blue-600 border-4 border-white dark:border-slate-800 shadow-md"></div>
+                    <h3 class="font-bold text-xl text-slate-800 dark:text-white" data-lang-key="expYellowIpeTitle"></h3>
+                    <p class="text-blue-600 dark:text-blue-400 text-sm font-semibold mb-4 tracking-wide uppercase" data-lang-key="expYellowIpeDate"></p>
+                    <ul class="list-disc list-inside text-slate-700 dark:text-gray-300 space-y-2 text-lg">
                         <li data-lang-key="expYellowIpe1"></li>
                         <li data-lang-key="expYellowIpe2"></li>
                         <li data-lang-key="expYellowIpe3"></li>
@@ -113,10 +156,11 @@
                     </ul>
                 </div>
 
-                <div class="experience-item">
-                    <h3 class="font-semibold text-gray-800" data-lang-key="expQuestradeTitle"></h3>
-                    <p class="text-gray-600 text-sm mb-2" data-lang-key="expQuestradeDate"></p>
-                    <ul class="list-disc list-inside text-gray-700 space-y-1">
+                <div class="experience-item relative pl-8 pb-8 border-l-2 border-blue-200 dark:border-blue-800/60 last:border-0 last:pb-0">
+                    <div class="timeline-dot absolute -left-[11px] top-1 w-5 h-5 rounded-full bg-blue-600 border-4 border-white dark:border-slate-800 shadow-md"></div>
+                    <h3 class="font-bold text-xl text-slate-800 dark:text-white" data-lang-key="expQuestradeTitle"></h3>
+                    <p class="text-blue-600 dark:text-blue-400 text-sm font-semibold mb-4 tracking-wide uppercase" data-lang-key="expQuestradeDate"></p>
+                    <ul class="list-disc list-inside text-slate-700 dark:text-gray-300 space-y-2 text-lg">
                         <li data-lang-key="expQuestrade1"></li>
                         <li data-lang-key="expQuestrade2"></li>
                         <li data-lang-key="expQuestrade3"></li>
@@ -126,10 +170,11 @@
                     </ul>
                 </div>
 
-                <div class="experience-item">
-                    <h3 class="font-semibold text-gray-800" data-lang-key="expFidelApiTitle"></h3>
-                    <p class="text-gray-600 text-sm mb-2" data-lang-key="expFidelApiDate"></p>
-                    <ul class="list-disc list-inside text-gray-700 space-y-1">
+                <div class="experience-item relative pl-8 pb-8 border-l-2 border-blue-200 dark:border-blue-800/60 last:border-0 last:pb-0">
+                    <div class="timeline-dot absolute -left-[11px] top-1 w-5 h-5 rounded-full bg-blue-600 border-4 border-white dark:border-slate-800 shadow-md"></div>
+                    <h3 class="font-bold text-xl text-slate-800 dark:text-white" data-lang-key="expFidelApiTitle"></h3>
+                    <p class="text-blue-600 dark:text-blue-400 text-sm font-semibold mb-4 tracking-wide uppercase" data-lang-key="expFidelApiDate"></p>
+                    <ul class="list-disc list-inside text-slate-700 dark:text-gray-300 space-y-2 text-lg">
                         <li data-lang-key="expFidelApi1"></li>
                         <li data-lang-key="expFidelApi2"></li>
                         <li data-lang-key="expFidelApi3"></li>
@@ -138,10 +183,11 @@
                     </ul>
                 </div>
 
-                <div class="experience-item">
-                    <h3 class="font-semibold text-gray-800" data-lang-key="expFarfetchTitle"></h3>
-                    <p class="text-gray-600 text-sm mb-2" data-lang-key="expFarfetchDate"></p>
-                    <ul class="list-disc list-inside text-gray-700 space-y-1">
+                <div class="experience-item relative pl-8 pb-8 border-l-2 border-blue-200 dark:border-blue-800/60 last:border-0 last:pb-0">
+                    <div class="timeline-dot absolute -left-[11px] top-1 w-5 h-5 rounded-full bg-blue-600 border-4 border-white dark:border-slate-800 shadow-md"></div>
+                    <h3 class="font-bold text-xl text-slate-800 dark:text-white" data-lang-key="expFarfetchTitle"></h3>
+                    <p class="text-blue-600 dark:text-blue-400 text-sm font-semibold mb-4 tracking-wide uppercase" data-lang-key="expFarfetchDate"></p>
+                    <ul class="list-disc list-inside text-slate-700 dark:text-gray-300 space-y-2 text-lg">
                         <li data-lang-key="expFarfetch1"></li>
                         <li data-lang-key="expFarfetch2"></li>
                         <li data-lang-key="expFarfetch3"></li>
@@ -149,10 +195,11 @@
                     </ul>
                 </div>
 
-                <div class="experience-item">
-                    <h3 class="font-semibold text-gray-800" data-lang-key="expPasseiDiretoTitle"></h3>
-                    <p class="text-gray-600 text-sm mb-2" data-lang-key="expPasseiDiretoDate"></p>
-                    <ul class="list-disc list-inside text-gray-700 space-y-1">
+                <div class="experience-item relative pl-8 pb-8 border-l-2 border-blue-200 dark:border-blue-800/60 last:border-0 last:pb-0">
+                    <div class="timeline-dot absolute -left-[11px] top-1 w-5 h-5 rounded-full bg-blue-600 border-4 border-white dark:border-slate-800 shadow-md"></div>
+                    <h3 class="font-bold text-xl text-slate-800 dark:text-white" data-lang-key="expPasseiDiretoTitle"></h3>
+                    <p class="text-blue-600 dark:text-blue-400 text-sm font-semibold mb-4 tracking-wide uppercase" data-lang-key="expPasseiDiretoDate"></p>
+                    <ul class="list-disc list-inside text-slate-700 dark:text-gray-300 space-y-2 text-lg">
                         <li data-lang-key="expPasseiDireto1"></li>
                         <li data-lang-key="expPasseiDireto2"></li>
                         <li data-lang-key="expPasseiDireto3"></li>
@@ -162,10 +209,11 @@
                     </ul>
                 </div>
 
-                <div class="experience-item">
-                    <h3 class="font-semibold text-gray-800" data-lang-key="expCesarTitle"></h3>
-                    <p class="text-gray-600 text-sm mb-2" data-lang-key="expCesarDate"></p>
-                    <ul class="list-disc list-inside text-gray-700 space-y-1">
+                <div class="experience-item relative pl-8 pb-8 border-l-2 border-blue-200 dark:border-blue-800/60 last:border-0 last:pb-0">
+                    <div class="timeline-dot absolute -left-[11px] top-1 w-5 h-5 rounded-full bg-blue-600 border-4 border-white dark:border-slate-800 shadow-md"></div>
+                    <h3 class="font-bold text-xl text-slate-800 dark:text-white" data-lang-key="expCesarTitle"></h3>
+                    <p class="text-blue-600 dark:text-blue-400 text-sm font-semibold mb-4 tracking-wide uppercase" data-lang-key="expCesarDate"></p>
+                    <ul class="list-disc list-inside text-slate-700 dark:text-gray-300 space-y-2 text-lg">
                         <li data-lang-key="expCesar1"></li>
                         <li data-lang-key="expCesar2"></li>
                         <li data-lang-key="expCesar3"></li>
@@ -177,10 +225,11 @@
                     </ul>
                 </div>
 
-                <div class="experience-item">
-                    <h3 class="font-semibold text-gray-800" data-lang-key="expMotorolaTitle"></h3>
-                    <p class="text-gray-600 text-sm mb-2" data-lang-key="expMotorolaDate"></p>
-                    <ul class="list-disc list-inside text-gray-700 space-y-1">
+                <div class="experience-item relative pl-8 pb-8 border-l-2 border-blue-200 dark:border-blue-800/60 last:border-0 last:pb-0">
+                    <div class="timeline-dot absolute -left-[11px] top-1 w-5 h-5 rounded-full bg-blue-600 border-4 border-white dark:border-slate-800 shadow-md"></div>
+                    <h3 class="font-bold text-xl text-slate-800 dark:text-white" data-lang-key="expMotorolaTitle"></h3>
+                    <p class="text-blue-600 dark:text-blue-400 text-sm font-semibold mb-4 tracking-wide uppercase" data-lang-key="expMotorolaDate"></p>
+                    <ul class="list-disc list-inside text-slate-700 dark:text-gray-300 space-y-2 text-lg">
                         <li data-lang-key="expMotorola1"></li>
                         <li data-lang-key="expMotorola2"></li>
                         <li data-lang-key="expMotorola3"></li>
@@ -189,10 +238,11 @@
                     </ul>
                 </div>
 
-                <div class="experience-item">
-                    <h3 class="font-semibold text-gray-800" data-lang-key="expDinamusTitle"></h3>
-                    <p class="text-gray-600 text-sm mb-2" data-lang-key="expDinamusDate"></p>
-                    <ul class="list-disc list-inside text-gray-700 space-y-1">
+                <div class="experience-item relative pl-8 pb-8 border-l-2 border-blue-200 dark:border-blue-800/60 last:border-0 last:pb-0">
+                    <div class="timeline-dot absolute -left-[11px] top-1 w-5 h-5 rounded-full bg-blue-600 border-4 border-white dark:border-slate-800 shadow-md"></div>
+                    <h3 class="font-bold text-xl text-slate-800 dark:text-white" data-lang-key="expDinamusTitle"></h3>
+                    <p class="text-blue-600 dark:text-blue-400 text-sm font-semibold mb-4 tracking-wide uppercase" data-lang-key="expDinamusDate"></p>
+                    <ul class="list-disc list-inside text-slate-700 dark:text-gray-300 space-y-2 text-lg">
                         <li data-lang-key="expDinamus1"></li>
                         <li data-lang-key="expDinamus2"></li>
                         <li data-lang-key="expDinamus3"></li>
@@ -200,10 +250,11 @@
                     </ul>
                 </div>
 
-                <div class="experience-item">
-                    <h3 class="font-semibold text-gray-800" data-lang-key="expFBVTitle"></h3>
-                    <p class="text-gray-600 text-sm mb-2" data-lang-key="expFBVDate"></p>
-                    <ul class="list-disc list-inside text-gray-700 space-y-1">
+                <div class="experience-item relative pl-8 pb-8 border-l-2 border-blue-200 dark:border-blue-800/60 last:border-0 last:pb-0">
+                    <div class="timeline-dot absolute -left-[11px] top-1 w-5 h-5 rounded-full bg-blue-600 border-4 border-white dark:border-slate-800 shadow-md"></div>
+                    <h3 class="font-bold text-xl text-slate-800 dark:text-white" data-lang-key="expFBVTitle"></h3>
+                    <p class="text-blue-600 dark:text-blue-400 text-sm font-semibold mb-4 tracking-wide uppercase" data-lang-key="expFBVDate"></p>
+                    <ul class="list-disc list-inside text-slate-700 dark:text-gray-300 space-y-2 text-lg">
                         <li data-lang-key="expFBV1"></li>
                         <li data-lang-key="expFBV2"></li>
                     </ul>

@@ -57,7 +57,38 @@ function applyLanguage(lang) {
 document.getElementById('lang-en').addEventListener('click', () => applyLanguage('en'));
 document.getElementById('lang-pt').addEventListener('click', () => applyLanguage('pt'));
 
-// Apply default language (English) on page load
+// --- Dark Mode Logic ---
+const themeToggleBtn = document.getElementById('theme-toggle');
+const darkIcon = document.getElementById('theme-toggle-dark-icon');
+const lightIcon = document.getElementById('theme-toggle-light-icon');
+
+function updateThemeIcons() {
+    if (document.documentElement.classList.contains('dark')) {
+        darkIcon.classList.add('hidden');
+        lightIcon.classList.remove('hidden');
+    } else {
+        lightIcon.classList.add('hidden');
+        darkIcon.classList.remove('hidden');
+    }
+}
+
+themeToggleBtn.addEventListener('click', function() {
+    // Toggle dark mode class
+    document.documentElement.classList.toggle('dark');
+    
+    // Update local storage
+    if (document.documentElement.classList.contains('dark')) {
+        localStorage.setItem('color-theme', 'dark');
+    } else {
+        localStorage.setItem('color-theme', 'light');
+    }
+    
+    // Update icons
+    updateThemeIcons();
+});
+
+// Apply default on page load
 document.addEventListener('DOMContentLoaded', () => {
     applyLanguage('en');
+    updateThemeIcons();
 });

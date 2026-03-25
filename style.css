@@ -1,59 +1,100 @@
-body {
-    font-family: 'Inter', sans-serif;
-    background-color: #f0f4f8; /* Cor de fundo suave */
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
+/* Custom CSS and Glassmorphism Styles */
+
+/* Base animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
-.container {
-    max-width: 960px;
-    margin: 0 auto;
-    padding: 1.5rem;
+
+.animate-fade-in-up {
+    animation: fadeInUp 0.5s ease-out forwards;
+    opacity: 0;
 }
-.link-card {
-    background-color: #ffffff;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-    padding: 1.5rem;
-    margin-bottom: 1.5rem;
-    transition: transform 0.2s ease-in-out;
+
+/* Glassmorphism Cards */
+.glass-card {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    border-radius: 1rem;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease, background-color 0.3s ease;
 }
-.link-card:hover {
-    transform: translateY(-5px);
+
+.dark .glass-card {
+    background: rgba(30, 41, 59, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
+
+.glass-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+}
+
+.dark .glass-card:hover {
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+/* Link items */
 .link-item {
-    display: flex;
-    align-items: center;
-    padding: 0.75rem 0;
-    border-bottom: 1px solid #e2e8f0;
-}
-.link-item:last-child {
-    border-bottom: none;
-}
-.link-item a {
-    color: #3498db;
+    display: block;
+    padding: 1.25rem 1.5rem;
+    background: rgba(255, 255, 255, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    border-radius: 0.75rem;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
     text-decoration: none;
-    font-weight: 500;
-    transition: color 0.2s;
-    flex-grow: 1;
 }
-.link-item a:hover {
-    color: #2980b9;
+
+.dark .link-item {
+    background: rgba(15, 23, 42, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.05);
 }
-.icon {
-    margin-right: 0.75rem;
-    color: #64748b;
+
+.link-item:hover {
+    background: rgba(255, 255, 255, 0.95);
+    border-color: rgba(59, 130, 246, 0.5);
+    transform: translateY(-2px) scale(1.01);
+    box-shadow: 0 8px 20px rgba(59, 130, 246, 0.1);
 }
+
+.dark .link-item:hover {
+    background: rgba(30, 41, 59, 0.8);
+    border-color: rgba(96, 165, 250, 0.4);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Language Switcher */
 .language-switcher button {
-    padding: 0.5rem 1rem;
-    border-radius: 8px;
-    font-weight: 500;
-    transition: background-color 0.2s, color 0.2s;
+    padding: 0.4rem 0.8rem;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    transition: all 0.2s ease;
+    color: rgba(255, 255, 255, 0.7);
 }
+
+.language-switcher button:hover {
+    color: white;
+}
+
 .language-switcher button.active {
-    background-color: #ffffff;
-    color: #3498db;
+    background-color: white;
+    color: #1e40af; /* blue-800 */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
-.language-switcher button:not(.active):hover {
-    background-color: rgba(255, 255, 255, 0.2);
+
+.dark .language-switcher button.active {
+    background-color: #1e293b; /* slate-800 */
+    color: #60a5fa; /* blue-400 */
 }
