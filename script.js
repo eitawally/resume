@@ -1,37 +1,16 @@
-// Object of translations
-const translations = {
-    en: {
-        pageTitle: "Wallace Batista de Santana Filho - Personal Website",
-        headerTitle: "Wallace Batista de Santana Filho",
-        headerSubtitle: "Test Engineer | Software Quality Assurance",
-        heroTitle: "Welcome to My Personal Page!",
-        heroText: "I'm a dedicated Test Engineer with extensive experience in Quality Assurance. Here you'll find links to my resume and other professional profiles.",
-        resumeLinksTitle: "My Resumes",
-        resumeLinkEn: "View Resume (English)",
-        resumeLinkPt: "View Resume (Portuguese)",
-        otherLinksTitle: "Other Links",
-        linkedinLink: "LinkedIn Profile",
-        githubLink: "GitHub Profile",
-        footerText: "&copy; 2025 Wallace Batista de Santana Filho. All rights reserved."
-    },
-    pt: {
-        pageTitle: "Wallace Batista de Santana Filho - Site Pessoal",
-        headerTitle: "Wallace Batista de Santana Filho",
-        headerSubtitle: "Engenheiro de Testes | Qualidade de Software",
-        heroTitle: "Bem-vindo à Minha Página Pessoal!",
-        heroText: "Sou um Engenheiro de Testes dedicado com vasta experiência em Quality Assurance. Aqui você encontrará links para meu currículo e outros perfis profissionais.",
-        resumeLinksTitle: "Meus Currículos",
-        resumeLinkEn: "Ver Currículo (Inglês)",
-        resumeLinkPt: "Ver Currículo (Português)",
-        otherLinksTitle: "Outros Links",
-        linkedinLink: "Perfil do LinkedIn",
-        githubLink: "Perfil do GitHub",
-        footerText: "&copy; 2025 Wallace Batista de Santana Filho. Todos os direitos reservados."
-    }
-};
+let translations = {};
 
 // Function to apply translations
-function applyLanguage(lang) {
+async function applyLanguage(lang) {
+    if (Object.keys(translations).length === 0) {
+        try {
+            const response = await fetch('translations.json');
+            translations = await response.json();
+        } catch (error) {
+            console.error('Error loading translations:', error);
+            return;
+        }
+    }
     document.querySelectorAll('[data-lang-key]').forEach(element => {
         const key = element.getAttribute('data-lang-key');
         if (translations[lang] && translations[lang][key]) {
@@ -43,6 +22,12 @@ function applyLanguage(lang) {
             }
         }
     });
+
+    // Update the dynamic resume link href
+    const resumeLink = document.getElementById('resume-link');
+    if (resumeLink) {
+        resumeLink.href = `resume/resume.html?lang=${lang}`;
+    }
 
     // Update the state of language buttons
     document.getElementById('lang-en').classList.remove('active');
@@ -72,17 +57,17 @@ function updateThemeIcons() {
     }
 }
 
-themeToggleBtn.addEventListener('click', function() {
+themeToggleBtn.addEventListener('click', function () {
     // Toggle dark mode class
     document.documentElement.classList.toggle('dark');
-    
+
     // Update local storage
     if (document.documentElement.classList.contains('dark')) {
         localStorage.setItem('color-theme', 'dark');
     } else {
         localStorage.setItem('color-theme', 'light');
     }
-    
+
     // Update icons
     updateThemeIcons();
 });

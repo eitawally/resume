@@ -1,0 +1,28 @@
+{
+    "en": {
+        "pageTitle": "Wallace Batista de Santana Filho - Personal Website",
+        "headerTitle": "Wallace Batista de Santana Filho",
+        "headerSubtitle": "Test Engineer | Software Quality Assurance",
+        "heroTitle": "Welcome to My Personal Page!",
+        "heroText": "I'm a dedicated Test Engineer with extensive experience in Quality Assurance. Here you'll find links to my resume and other professional profiles.",
+        "resumeLinksTitle": "My Resumes",
+        "viewResumeLink": "View Resume",
+        "otherLinksTitle": "Other Links",
+        "linkedinLink": "LinkedIn Profile",
+        "githubLink": "GitHub Profile",
+        "footerText": "&copy; 2026 Wallace Batista de Santana Filho. All rights reserved."
+    },
+    "pt": {
+        "pageTitle": "Wallace Batista de Santana Filho - Site Pessoal",
+        "headerTitle": "Wallace Batista de Santana Filho",
+        "headerSubtitle": "Engenheiro de Testes | Qualidade de Software",
+        "heroTitle": "Bem-vindo à Minha Página Pessoal!",
+        "heroText": "Sou um Engenheiro de Testes dedicado com vasta experiência em Quality Assurance. Aqui você encontrará links para meu currículo e outros perfis profissionais.",
+        "resumeLinksTitle": "Meus Currículos",
+        "viewResumeLink": "Ver Currículo",
+        "otherLinksTitle": "Outros Links",
+        "linkedinLink": "Perfil do LinkedIn",
+        "githubLink": "Perfil do GitHub",
+        "footerText": "&copy; 2026 Wallace Batista de Santana Filho. Todos os direitos reservados."
+    }
+}
